@@ -1,0 +1,73 @@
+{
+    // 使用 IntelliSense 了解相关属性。 
+    // 悬停以查看现有属性的描述。
+    // 欲了解更多信息，请访问: https://go.microsoft.com/fwlink/?linkid=830387
+    "version": "0.2.0",
+    "configurations": [
+        {
+            "name": "readelf",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/binutils/readelf",
+            "stopAtEntry": false,
+            "cwd": "${fileDirname}",
+            "environment": [],
+            "externalConsole": false,
+            "MIMode": "gdb",
+            "args": [
+                "-j",
+                "/mnt/d/lib_compare/libaudioflinger.ori.so"
+            ],
+        },
+
+        {
+            "name": "objcopy extract .text",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/binutils/objcopy",
+            "cwd": "${fileDirname}",
+            "miDebuggerPath": "gdb",
+            "environment": [
+                {
+                    "name": "GTEST_COLOR",
+                    "value": "0"
+                }
+            ],
+            "args": [
+                "-j",
+                ".text",
+                "-O",
+                "binary",
+                "-I",
+                "elf32-little",
+                "/mnt/d/lib_compare/libaudioflinger.ori.so",
+                "/mnt/d/lib_compare/libaudioflinger.ori.so.text"
+            ],
+        },
+
+        {
+            "name": "objcopy replace .text",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/binutils/objcopy",
+            "cwd": "${fileDirname}",
+            "miDebuggerPath": "gdb",
+            "environment": [
+                {
+                    "name": "GTEST_COLOR",
+                    "value": "0"
+                }
+            ],
+            "args": [
+                "--update-section",
+                ".text=/mnt/d/lib_compare/total.text",
+                "/mnt/d/lib_compare/libaudioflinger.ori.so",
+                "/mnt/d/lib_compare/libaudioflinger.ori.total.so",
+                // "-I",
+                // "elf32-little",
+                // "-O",
+                // "elf32-little"
+            ],
+        },
+    ]
+}

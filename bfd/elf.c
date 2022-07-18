@@ -5859,6 +5859,7 @@ assign_file_positions_for_load_sections (bfd *abfd,
 		  adjust = 0;
 		  sec->lma = p_end / opb;
 		}
+		  this_hdr->sh_addr = p_end;
 	      p->p_memsz += adjust;
 
 	      if (p->p_type == PT_LOAD)
