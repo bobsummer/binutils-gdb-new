@@ -2590,9 +2590,10 @@ check_new_section_flags (flagword flags, bfd * abfd, const char * secname)
   return flags;
 }
 
+
 /* Copy object file IBFD onto OBFD.
    Returns TRUE upon success, FALSE otherwise.  */
-
+__attribute__ ((optimize(0)))
 static bool
 copy_object (bfd *ibfd, bfd *obfd, const bfd_arch_info_type *input_arch)
 {
@@ -3500,6 +3501,9 @@ copy_object (bfd *ibfd, bfd *obfd, const bfd_arch_info_type *input_arch)
 
   return true;
 }
+
+
+
 
 /* Read each archive element in turn from IBFD, copy the
    contents to temp file, and keep the temp file handle.

@@ -60,9 +60,9 @@
             ],
             "args": [
                 "--update-section",
-                ".text=/mnt/d/lib_compare/total.text",
+                ".text=/mnt/d/lib_compare/libaudioflinger.ori.so.text",
                 "/mnt/d/lib_compare/libaudioflinger.ori.so",
-                "/mnt/d/lib_compare/libaudioflinger.ori.total.so",
+                "/mnt/d/lib_compare/libaudioflinger.ori.reupdate.so",
                 // "-I",
                 // "elf32-little",
                 // "-O",
@@ -71,10 +71,39 @@
         },
 
         {
+            "name": "objcopy extract .got",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/binutils/objcopy",
+
+            "cwd": "${fileDirname}",
+            "miDebuggerPath": "gdb",
+            "environment": [
+                {
+                    "name": "GTEST_COLOR",
+                    "value": "0"
+                }
+            ],
+
+            "args": [
+                "-j",
+                ".got",
+                "-O",
+                "binary",
+                "-I",
+                "elf32-little",
+                "/mnt/d/lib_compare/libaudioflinger.ori.so",
+                "/mnt/d/lib_compare/libaudioflinger.ori.so.got"
+            ],
+
+        },
+
+        {
             "name": "readelf .relocate",
             "type": "cppdbg",
             "request": "launch",
             "program": "${workspaceRoot}/binutils/readelf",
+
             "cwd": "${fileDirname}",
             "miDebuggerPath": "gdb",
             "environment": [

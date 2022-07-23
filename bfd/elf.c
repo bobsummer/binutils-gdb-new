@@ -3158,7 +3158,7 @@ struct fake_section_arg
 };
 
 /* Set up an ELF internal section header for a section.  */
-
+__attribute__ ((optimize(0)))
 static void
 elf_fake_sections (bfd *abfd, asection *asect, void *fsarg)
 {
@@ -4242,7 +4242,7 @@ _bfd_elf_assign_file_position_for_section (Elf_Internal_Shdr *i_shdrp,
 /* Compute the file positions we are going to put the sections at, and
    otherwise prepare to begin writing out the ELF file.  If LINK_INFO
    is not NULL, this is being called by the ELF backend linker.  */
-
+__attribute__ ((optimize(0)))
 bool
 _bfd_elf_compute_section_file_positions (bfd *abfd,
 					 struct bfd_link_info *link_info)
@@ -5859,7 +5859,10 @@ assign_file_positions_for_load_sections (bfd *abfd,
 		  adjust = 0;
 		  sec->lma = p_end / opb;
 		}
-		  this_hdr->sh_addr = p_end;
+		  if(p_end>this_hdr->sh_addr)
+		  {
+			this_hdr->sh_addr = p_end;
+		  }
 	      p->p_memsz += adjust;
 
 	      if (p->p_type == PT_LOAD)
