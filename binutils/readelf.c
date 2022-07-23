@@ -1268,7 +1268,7 @@ slurp_rela_relocs (Filedata *            filedata,
    pointer to a malloc'ed buffer containing the relocs is placed in *RELSP,
    and the number of relocs loaded is placed in *NRELSP.  It is the caller's
    responsibility to free the allocated buffer.  */
-
+__attribute__ ((optimize(0)))
 static bool
 slurp_rel_relocs (Filedata *            filedata,
 		  unsigned long         rel_offset,
@@ -1479,7 +1479,7 @@ uses_msp430x_relocs (Filedata * filedata)
 
 /* Display the contents of the relocation data found at the specified
    offset.  */
-
+__attribute__ ((optimize(0)))
 static bool
 dump_relocations (Filedata *          filedata,
 		  unsigned long       rel_offset,
@@ -8329,7 +8329,7 @@ static struct
 };
 
 /* Process the reloc section.  */
-
+__attribute__ ((optimize(0)))
 static bool
 process_relocs (Filedata * filedata)
 {
@@ -22267,7 +22267,7 @@ might_need_separate_debug_info (Filedata * filedata)
    This file may actually be stored in an archive.  The file is
    positioned at the start of the ELF object.  Returns TRUE if no
    problems were encountered, FALSE otherwise.  */
-
+__attribute__ ((optimize(0)))
 static bool
 process_object (Filedata * filedata)
 {

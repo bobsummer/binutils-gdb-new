@@ -69,5 +69,25 @@
                 // "elf32-little"
             ],
         },
+
+        {
+            "name": "readelf .relocate",
+            "type": "cppdbg",
+            "request": "launch",
+            "program": "${workspaceRoot}/binutils/readelf",
+            "cwd": "${fileDirname}",
+            "miDebuggerPath": "gdb",
+            "environment": [
+                {
+                    "name": "GTEST_COLOR",
+                    "value": "0"
+                }
+            ],
+            "args": [
+                "--relocs",
+                "/mnt/d/lib_compare/libaudioflinger.ori.totalnew.so",
+                // "/mnt/d/lib_compare/libaudioflinger.ori.so",
+            ],
+        },
     ]
 }
